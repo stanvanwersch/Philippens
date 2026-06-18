@@ -462,6 +462,61 @@ footer{
   .lb-inner{grid-template-columns:1fr}
   .lb-img{max-height:50vh;border-right:none;border-bottom:var(--rule)}
 }
+
+/* ── CONTACT FORM ── */
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.form-field {
+  border-bottom: var(--rule);
+  padding: 14px 20px;
+}
+.form-field--last { flex: 1; }
+.form-field label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 6px;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--black);
+  background: transparent;
+  resize: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: #aaa; }
+.form-submit {
+  border: none;
+  border-top: 3px solid var(--black);
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+  margin-top: auto;
+}
+.form-submit:hover { background: #333; }
 </style>
 </head>
 <body>
@@ -633,12 +688,12 @@ footer{
       <div class="stat-l">Geboortejaar</div>
     </div>
     <div class="stat">
-      <div class="stat-n">'82</div>
-      <div class="stat-l">Toegelaten Kunstacademie Maastricht</div>
+      <div class="stat-n">'98</div>
+      <div class="stat-l">De VAK, centrum voor de kunsten, Delft</div>
     </div>
     <div class="stat">
-      <div class="stat-n">'98</div>
-      <div class="stat-l">Atelier De Witte Raaf, Delft</div>
+      <div class="stat-n">UU</div>
+      <div class="stat-l">Universiteit Utrecht, Psychofarmacologie</div>
     </div>
   </div>
 </div>
@@ -651,17 +706,39 @@ footer{
   <div class="about-text">
     <h3>Exposities,<br>opdrachten &amp;<br>collecties</h3>
     <p>Voor vragen over beschikbare werken, opdrachtschilderijen of exposities kunt u contact opnemen via onderstaande gegevens.</p>
-    <p>Ingrid Philippens werkt vanuit atelier De Witte Raaf in Delft, waar ze regelmatig open atelierdag houdt.</p>
+    <p>Ingrid Philippens werkt vanuit De VAK, centrum voor de kunsten aan de Westvest 9 in Delft.</p>
   </div>
-  <div class="about-stats">
-    <div class="stat" style="grid-column:span 2;border-right:none">
-      <div class="stat-l" style="margin-bottom:6px">Atelier</div>
-      <div style="font-size:18px;font-weight:600;letter-spacing:-0.01em">De Witte Raaf, Delft</div>
-    </div>
-    <div class="stat" style="grid-column:span 2;border-right:none;border-bottom:none">
-      <div class="stat-l" style="margin-bottom:6px">Specialisatie</div>
-      <div style="font-size:15px;font-family:'Libre Baskerville',serif;font-style:italic;line-height:1.5">Figuratief &amp; expressionistisch schilderwerk<br>Olie op doek</div>
-    </div>
+  <div class="about-stats" style="display:block;padding:0">
+    <form action="https://formspree.io/f/xqaqpqpq" method="POST" id="contact-form" style="height:100%">
+      <input type="hidden" name="_replyto" value="ingrid.philippens@gmail.com">
+      <input type="hidden" name="_subject" value="Bericht via website Ingrid Philippens">
+      <div class="form-field">
+        <label>Naam</label>
+        <input type="text" name="naam" required placeholder="Uw naam">
+      </div>
+      <div class="form-field">
+        <label>E-mailadres</label>
+        <input type="email" name="email" required placeholder="uw@email.nl">
+      </div>
+      <div class="form-field">
+        <label>Onderwerp</label>
+        <select name="onderwerp">
+          <option value="">Selecteer...</option>
+          <option>Werk aankopen</option>
+          <option>Opdracht</option>
+          <option>Expositie</option>
+          <option>Overig</option>
+        </select>
+      </div>
+      <div class="form-field form-field--last">
+        <label>Bericht</label>
+        <textarea name="bericht" required placeholder="Uw bericht..." rows="4"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Versturen →</button>
+      <div id="form-success" style="display:none">
+        <p style="font-family:'Libre Baskerville',serif;font-style:italic;padding:20px 24px;color:#333">Uw bericht is verzonden. Ingrid neemt zo spoedig mogelijk contact op.</p>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -673,11 +750,11 @@ footer{
   </div>
   <div class="footer-col">
     <h4>Atelier</h4>
-    <address>De Witte Raaf<br>Hendrik van Leeuwen<br>Delft</address>
+    <address>De VAK, centrum voor de kunsten<br>Westvest 9<br>Delft</address>
   </div>
   <div class="footer-col">
-    <h4>Opleiding</h4>
-    <p>Universiteit Utrecht<br>Psychofarmacologie, promotie<br><br>Kunstacademie Maastricht<br>Toegelaten 1982</p>
+    <h4>Contact</h4>
+    <p><a href="mailto:ingrid.philippens@gmail.com" style="text-decoration:underline">ingrid.philippens@gmail.com</a></p>
   </div>
 </footer>
 <div class="footer-bottom">
@@ -729,6 +806,37 @@ function closeLb(e){
   }
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb({target:document.getElementById('lb')});});
+
+// Contact form AJAX
+const form = document.getElementById('contact-form');
+if(form){
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Verzenden...';
+    btn.disabled = true;
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://formspree.io/f/ingrid.philippens@gmail.com', {
+        method:'POST',
+        body: data,
+        headers:{'Accept':'application/json'}
+      });
+      if(res.ok){
+        form.querySelectorAll('.form-field').forEach(el=>el.style.display='none');
+        btn.style.display='none';
+        document.getElementById('form-success').style.display='block';
+      } else {
+        btn.textContent = 'Fout — probeer opnieuw';
+        btn.disabled = false;
+      }
+    } catch(err){
+      btn.textContent = 'Fout — probeer opnieuw';
+      btn.disabled = false;
+    }
+  });
+}
+
 </script>
 </body>
 </html>
